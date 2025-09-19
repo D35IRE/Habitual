@@ -39,7 +39,6 @@ latest/
 
 1. Clone the repository:
 
-```bash
 git clone <your-repo-link>  
 
 2. Open index.html in your preferred browser.
