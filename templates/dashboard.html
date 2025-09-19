@@ -1,0 +1,131 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container">
+    <!-- Dashboard Header -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <h2 class="text-success mb-3">
+                <i class="fas fa-tachometer-alt me-2"></i>Your Dashboard
+            </h2>
+        </div>
+    </div>
+
+    <!-- Stats Cards -->
+    <div class="row g-4 mb-5">
+        <div class="col-md-4">
+            <div class="stat-card p-4 text-center rounded-3 border">
+                <div class="stat-icon mb-3">
+                    <i class="fas fa-trophy fa-3x text-warning"></i>
+                </div>
+                <h3 class="stat-number text-primary" id="total-points">{{ total_points }}</h3>
+                <p class="text-muted mb-0">Total Points</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="stat-card p-4 text-center rounded-3 border">
+                <div class="stat-icon mb-3">
+                    <i class="fas fa-leaf fa-3x text-success"></i>
+                </div>
+                <h3 class="stat-number text-success" id="carbon-saved">{{ total_carbon_saved }}kg</h3>
+                <p class="text-muted mb-0">CO₂ Saved</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="stat-card p-4 text-center rounded-3 border">
+                <div class="stat-icon mb-3">
+                    <i class="fas fa-fire fa-3x text-danger"></i>
+                </div>
+                <h3 class="stat-number text-danger" id="current-streak">{{ current_streak }}</h3>
+                <p class="text-muted mb-0">Day Streak</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Habits Section -->
+        <div class="col-lg-8 mb-4">
+            <div class="habits-section p-4 rounded-3 border">
+                <h4 class="text-success mb-4">
+                    <i class="fas fa-list me-2"></i>Today's Habits
+                </h4>
+                <div class="progress mb-4">
+                    <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" 
+                         role="progressbar" 
+                         style="width: {{ (completed_today|length / habits|length * 100) if habits else 0 }}%" 
+                         id="progress-bar">
+                        {{ completed_today|length }}/{{ habits|length }} Complete
+                    </div>
+                </div>
+                
+                <div class="habits-list">
+                    {% for habit in habits %}
+                    <div class="habit-item d-flex align-items-center justify-content-between p-3 mb-3 rounded-2 border {% if habit[0] in completed_today %}completed{% endif %}" 
+                         data-habit-id="{{ habit[0] }}" data-points="{{ habit[4] }}">
+                        <div class="habit-content d-flex align-items-center">
+                            <div class="form-check me-3">
+                                <input class="form-check-input habit-checkbox" 
+                                       type="checkbox" 
+                                       {% if habit[0] in completed_today %}checked disabled{% endif %}
+                                       data-habit-id="{{ habit[0] }}">
+                            </div>
+                            <div>
+                                <h6 class="mb-1 text-dark">{{ habit[1] }}</h6>
+                                <small class="text-muted">{{ habit[2] }}</small>
+                            </div>
+                        </div>
+                        <div class="habit-points">
+                            <span class="badge bg-success">{{ habit[4] }} pts</span>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Daily Tip Section -->
+        <div class="col-lg-4 mb-4">
+            <div class="tip-section p-4 rounded-3 border h-100">
+                <h4 class="text-success mb-4">
+                    <i class="fas fa-lightbulb me-2"></i>Daily Eco Tip
+                </h4>
+                <div class="tip-card p-3 bg-light rounded-2 mb-3">
+                    <p class="mb-0" id="daily-tip">{{ daily_tip }}</p>
+                </div>
+                <button class="btn btn-outline-success w-100" id="new-tip-btn">
+                    <i class="fas fa-refresh me-2"></i>Get New Tip
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="modal fade" id="successModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-success">
+                        <i class="fas fa-check-circle me-2"></i>Habit Completed!
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <div class="success-animation mb-3">
+                        <i class="fas fa-trophy fa-4x text-warning"></i>
+                    </div>
+                    <h6 class="text-success mb-2">Great job!</h6>
+                    <p class="mb-3" id="success-message">You earned points and saved CO₂!</p>
+                    <div class="stats-update">
+                        <small class="text-muted">Updated stats will appear above</small>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-bs-dismiss="modal">
+                        Keep Going!
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
