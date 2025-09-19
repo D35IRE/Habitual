@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register - EcoHabit</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="firebase-config.js"></script>
+</head>
+<body>
+  <div class="form-container">
+    <div class="logo">🌱 EcoHabit</div>
+    <h2>Join the Eco Movement!</h2>
+    <p>Start your sustainable living journey today</p>
+    
+    <form id="registerForm">
+      <input type="email" id="registerEmail" placeholder="Enter Gmail" required>
+      <input type="password" id="registerPassword" placeholder="Enter Password (min 6 characters)" required>
+      <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+      <button type="submit">Create Account</button>
+    </form>
+    
+    <p>Already have an account? <a href="login.html">Login here</a></p>
+    <p><a href="index.html">← Back to Home</a></p>
+  </div>
+
+  <script type="module">
+    import { auth, createUserWithEmailAndPassword } from './firebase-config.js';
+
+    // Gmail validation
+    function isValidEmail(email) {
+      return /^[a-zA-Z0-9._%+-]+@gmail\.com$/.test(email);
+    }
+
+    document.getElementById('registerForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('registerEmail').value;
+      const password = document.getElementById('registerPassword').value;
+      const confirmPassword = document.getElementById('confirmPassword').value;
+
+      if (!isValidEmail(email)) {
+        alert('Please enter a valid Gmail address (example@gmail.com)');
+        return;
+      }
+
+      if (password.length < 6) {
+        alert('Password must be at least 6 characters long');
+        return;
+      }
+
+      if (password !== confirmPassword) {
+        alert('Passwords do not match!');
+        return;
+      }
+
+      try {
+        await createUserWithEmailAndPassword(auth, email, password);
+        alert('Account created successfully! Welcome to EcoHabit! 🌱');
+        window.location.href = "login.html";
+      } catch (error) {
+        alert("Registration failed: " + error.message);
+      }
+    });
+  </script>
+</body>
+</html>

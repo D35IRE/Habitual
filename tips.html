@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daily Tips - EcoHabit</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo">🌱 EcoHabit</div>
+      <div class="nav-menu">
+        <a href="dashboard.html" class="nav-item">Dashboard</a>
+        <a href="habits.html" class="nav-item">My Habits</a>
+        <a href="calculator.html" class="nav-item">Carbon Calculator</a>
+        <a href="tips.html" class="nav-item active">Daily Tips</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="habit-section">
+      <h2 class="section-title">
+        <i class="fas fa-chart-line"></i>
+        Impact Statistics
+      </h2>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+        <div class="stat-card">
+          <div style="font-size: 2.5rem; margin-bottom: 1rem;">🌳</div>
+          <div class="stat-number">21.8</div>
+          <div>kg CO₂ absorbed by one tree per year</div>
+        </div>
+        
+        <div class="stat-card">
+          <div style="font-size: 2.5rem; margin-bottom: 1rem;">🚗</div>
+          <div class="stat-number">4.6</div>
+          <div>metric tons CO₂ per car per year</div>
+        </div>
+        
+        <div class="stat-card">
+          <div style="font-size: 2.5rem; margin-bottom: 1rem;">💡</div>
+          <div class="stat-number">75%</div>
+          <div>less energy used by LED bulbs</div>
+        </div>
+        
+        <div class="stat-card">
+          <div style="font-size: 2.5rem; margin-bottom: 1rem;">🥩</div>
+          <div class="stat-number">14.5%</div>
+          <div>of global emissions from livestock</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="habit-section">
+      <h2 class="section-title">
+        <i class="fas fa-seedling"></i>
+        Quick Action Ideas
+      </h2>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem;">
+        <div onclick="suggestHabit('Switch to bamboo toothbrush', 0.1, 5)" 
+             style="background: linear-gradient(135deg, #74b9ff, #0984e3); color: white; padding: 1.5rem; border-radius: 15px; cursor: pointer; transition: transform 0.3s;"
+             onmouseover="this.style.transform='translateY(-5px)'"
+             onmouseout="this.style.transform='translateY(0)'">
+          <div style="font-size: 2rem; margin-bottom: 0.5rem;">🪥</div>
+          <h4>Switch to Bamboo Toothbrush</h4>
+          <p>Biodegradable alternative to plastic toothbrushes</p>
+          <small>Impact: 0.1 kg CO₂ saved per month</small>
+        </div>
+        
+        <div onclick="suggestHabit('Use cloth napkins', 0.3, 8)" 
+             style="background: linear-gradient(135deg, #00b894, #00a085); color: white; padding: 1.5rem; border-radius: 15px; cursor: pointer; transition: transform 0.3s;"
+             onmouseover="this.style.transform='translateY(-5px)'"
+             onmouseout="this.style.transform='translateY(0)'">
+          <div style="font-size: 2rem; margin-bottom: 0.5rem;">🧻</div>
+          <h4>Use Cloth Napkins</h4>
+          <p>Replace disposable paper napkins</p>
+          <small>Impact: 0.3 kg CO₂ saved per month</small>
+        </div>
+        
+        <div onclick="suggestHabit('Air dry laundry', 2.3, 25)" 
+             style="background: linear-gradient(135deg, #fd79a8, #e84393); color: white; padding: 1.5rem; border-radius: 15px; cursor: pointer; transition: transform 0.3s;"
+             onmouseover="this.style.transform='translateY(-5px)'"
+             onmouseout="this.style.transform='translateY(0)'">
+          <div style="font-size: 2rem; margin-bottom: 0.5rem;">👕</div>
+          <h4>Air Dry Laundry</h4>
+          <p>Skip the dryer and use natural air</p>
+          <small>Impact: 2.3 kg CO₂ saved per load</small>
+        </div>
+        
+        <div onclick="suggestHabit('Use digital receipts', 0.2, 6)" 
+             style="background: linear-gradient(135deg, #fdcb6e, #e17055); color: white; padding: 1.5rem; border-radius: 15px; cursor: pointer; transition: transform 0.3s;"
+             onmouseover="this.style.transform='translateY(-5px)'"
+             onmouseout="this.style.transform='translateY(0)'">
+          <div style="font-size: 2rem; margin-bottom: 0.5rem;">📱</div>
+          <h4>Choose Digital Receipts</h4>
+          <p>Reduce paper waste from shopping</p>
+          <small>Impact: 0.2 kg CO₂ saved per month</small>
+        </div>
+        
+        <div onclick="suggestHabit('Meatless Monday', 3.5, 30)" 
+             style="background: linear-gradient(135deg, #a29bfe, #6c5ce7); color: white; padding: 1.5rem; border-radius: 15px; cursor: pointer; transition: transform 0.3s;"
+             onmouseover="this.style.transform='translateY(-5px)'"
+             onmouseout="this.style.transform='translateY(0)'">
+          <div style="font-size: 2rem; margin-bottom: 0.5rem;">🥬</div>
+          <h4>Meatless Monday</h4>
+          <p>One plant-based day per week</p>
+          <small>Impact: 3.5 kg CO₂ saved weekly</small>
+        </div>
+        
+        <div onclick="suggestHabit('Use ecosia search engine', 0.5, 10)" 
+             style="background: linear-gradient(135deg, #55a3ff, #003d82); color: white; padding: 1.5rem; border-radius: 15px; cursor: pointer; transition: transform 0.3s;"
+             onmouseover="this.style.transform='translateY(-5px)'"
+             onmouseout="this.style.transform='translateY(0)'">
+          <div style="font-size: 2rem; margin-bottom: 0.5rem;">🔍</div>
+          <h4>Use Ecosia Search</h4>
+          <p>Search engine that plants trees</p>
+          <small>Impact: Plants trees with ad revenue</small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+  <script>
+    // Initialize tips page
+    document.addEventListener('DOMContentLoaded', () => {
+      initApp();
+      displayDailyTip();
+    });
+
+    function suggestHabit(name, impact, points) {
+      if (confirm(`Would you like to add "${name}" to your habits?\n\nImpact: ${impact} kg CO₂\nPoints: ${points} eco points`)) {
+        // Add as custom habit
+        const customHabit = {
+          id: gameState.customHabitId++,
+          name: name,
+          icon: '🌱',
+          impact: impact,
+          description: 'Suggested eco-friendly habit',
+          points: points,
+          isCustom: true
+        };
+
+        gameState.activeHabits.push({
+          ...customHabit,
+          streak: 0,
+          lastCompleted: null,
+          completedToday: false,
+          weeklyGoal: 7,
+          weeklyProgress: 0,
+          isCustom: true
+        });
+
+        saveGameState();
+        alert(`"${name}" added to your habits! 🌱\nGo to "My Habits" to start tracking it.`);
+      }
+    }
+  </script>
+</body>
+</html> fa-lightbulb"></i>
+        Daily Eco Tips
+      </h2>
+      
+      <div class="tip-card">
+        <div class="tip-icon">💡</div>
+        <h3>Today's Tip</h3>
+        <p id="dailyTip">Loading tip...</p>
+        <button class="btn" onclick="getNewTip()" style="margin-top: 1rem;">
+          Get New Tip
+        </button>
+      </div>
+    </div>
+
+    <div class="habit-section">
+      <h2 class="section-title">
+        <i class="fas fa-book"></i>
+        Sustainability Guide
+      </h2>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+        <div style="background: #f8f9fa; padding: 2rem; border-radius: 15px;">
+          <h3 style="color: #27ae60; margin-bottom: 1rem;">🏠 At Home</h3>
+          <ul style="line-height: 1.8; color: #666;">
+            <li>Switch to LED bulbs - use 75% less energy</li>
+            <li>Unplug devices when not in use</li>
+            <li>Take shorter showers (5 minutes max)</li>
+            <li>Use cold water for washing clothes</li>
+            <li>Install a programmable thermostat</li>
+            <li>Seal air leaks around windows and doors</li>
+          </ul>
+        </div>
+
+        <div style="background: #f8f9fa; padding: 2rem; border-radius: 15px;">
+          <h3 style="color: #27ae60; margin-bottom: 1rem;">🚲 Transportation</h3>
+          <ul style="line-height: 1.8; color: #666;">
+            <li>Walk or bike for trips under 2km</li>
+            <li>Use public transportation</li>
+            <li>Carpool or use ride-sharing</li>
+            <li>Keep car tires properly inflated</li>
+            <li>Combine multiple errands in one trip</li>
+            <li>Work from home when possible</li>
+          </ul>
+        </div>
+
+        <div style="background: #f8f9fa; padding: 2rem; border-radius: 15px;">
+          <h3 style="color: #27ae60; margin-bottom: 1rem;">🍽️ Food & Diet</h3>
+          <ul style="line-height: 1.8; color: #666;">
+            <li>Eat more plant-based meals</li>
+            <li>Buy local and seasonal produce</li>
+            <li>Reduce food waste</li>
+            <li>Compost organic waste</li>
+            <li>Grow your own herbs and vegetables</li>
+            <li>Choose organic when possible</li>
+          </ul>
+        </div>
+
+        <div style="background: #f8f9fa; padding: 2rem; border-radius: 15px;">
+          <h3 style="color: #27ae60; margin-bottom: 1rem;">♻️ Waste Reduction</h3>
+          <ul style="line-height: 1.8; color: #666;">
+            <li>Use reusable bags, bottles, and containers</li>
+            <li>Recycle paper, plastic, glass, and metal</li>
+            <li>Buy products with minimal packaging</li>
+            <li>Repair items instead of throwing away</li>
+            <li>Donate or sell items you no longer need</li>
+            <li>Choose quality over quantity</li>
+          </ul>
+        </div>
+
+        <div style="background: #f8f9fa; padding: 2rem; border-radius: 15px;">
+          <h3 style="color: #27ae60; margin-bottom: 1rem;">💧 Water Conservation</h3>
+          <ul style="line-height: 1.8; color: #666;">
+            <li>Fix leaks promptly</li>
+            <li>Install low-flow showerheads</li>
+            <li>Collect rainwater for plants</li>
+            <li>Turn off tap while brushing teeth</li>
+            <li>Use dishwasher only when full</li>
+            <li>Water plants during cooler hours</li>
+          </ul>
+        </div>
+
+        <div style="background: #f8f9fa; padding: 2rem; border-radius: 15px;">
+          <h3 style="color: #27ae60; margin-bottom: 1rem;">🛒 Conscious Shopping</h3>
+          <ul style="line-height: 1.8; color: #666;">
+            <li>Buy only what you need</li>
+            <li>Choose sustainable brands</li>
+            <li>Look for eco-friendly certifications</li>
+            <li>Buy second-hand when possible</li>
+            <li>Support local businesses</li>
+            <li>Read labels and ingredients</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="habit-section">
+      <h2 class="section-title">
+        <i class="fas

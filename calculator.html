@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carbon Calculator - EcoHabit</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo">🌱 EcoHabit</div>
+      <div class="nav-menu">
+        <a href="dashboard.html" class="nav-item">Dashboard</a>
+        <a href="habits.html" class="nav-item">My Habits</a>
+        <a href="calculator.html" class="nav-item active">Carbon Calculator</a>
+        <a href="tips.html" class="nav-item">Daily Tips</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="carbon-calculator">
+      <h2 class="section-title" style="color: white;">
+        <i class="fas fa-calculator"></i>
+        Carbon Footprint Calculator
+      </h2>
+      <div class="calculator-grid">
+        <div>
+          <h3>Calculate Your Daily Impact</h3>
+          <p>See how your habits reduce carbon emissions!</p>
+          <div style="margin-top: 2rem;">
+            <div style="background: rgba(255,255,255,0.2); padding: 1rem; border-radius: 10px; margin: 1rem 0;">
+              <strong>Today's Impact:</strong><br>
+              <span id="todayImpact">0 kg CO₂ saved</span>
+            </div>
+            <div style="background: rgba(255,255,255,0.2); padding: 1rem; border-radius: 10px;">
+              <strong>Monthly Projection:</strong><br>
+              <span id="monthlyProjection">0 kg CO₂ saved</span>
+            </div>
+          </div>
+        </div>
+        <div style="text-align: center;">
+          <div style="font-size: 4rem; margin-bottom: 1rem;">🌍</div>
+          <h3>Your Eco Impact</h3>
+          <div id="impactComparison" style="margin-top: 1rem;">
+            Start completing habits to see your environmental impact!
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="habit-section">
+      <h2 class="section-title">
+        <i class="fas fa-leaf"></i>
+        Habit Impact Breakdown
+      </h2>
+      <div id="habitImpactBreakdown">
+        <p style="text-align: center; color: #666; padding: 2rem;">
+          <a href="habits.html" class="btn">Add Some Habits to See Their Impact!</a>
+        </p>
+      </div>
+    </div>
+
+    <div class="habit-section">
+      <h2 class="section-title">
+        <i class="fas fa-chart-bar"></i>
+        Environmental Facts
+      </h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+        <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 15px; text-align: center;">
+          <div style="font-size: 2rem; margin-bottom: 1rem;">🚗</div>
+          <h4>Transportation</h4>
+          <p>Transportation accounts for 28% of greenhouse gas emissions. Walking or biking just 1km instead of driving saves 0.2kg CO₂!</p>
+        </div>
+        <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 15px; text-align: center;">
+          <div style="font-size: 2rem; margin-bottom: 1rem;">💡</div>
+          <h4>Energy Use</h4>
+          <p>Switching to LED bulbs uses 75% less energy. Unplugging devices when not in use can save up to 10% on your electricity bill!</p>
+        </div>
+        <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 15px; text-align: center;">
+          <div style="font-size: 2rem; margin-bottom: 1rem;">🥗</div>
+          <h4>Food Choices</h4>
+          <p>Livestock accounts for 14.5% of global greenhouse gas emissions. One plant-based meal saves 3.5kg CO₂ on average!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+  <script>
+    // Initialize calculator page
+    document.addEventListener('DOMContentLoaded', () => {
+      initApp();
+      updateCarbonCalculator();
+      renderHabitImpactBreakdown();
+    });
+
+    function renderHabitImpactBreakdown() {
+      const container = document.getElementById('habitImpactBreakdown');
+      
+      if (gameState.activeHabits.length === 0) {
+        container.innerHTML = `
+          <p style="text-align: center; color: #666; padding: 2rem;">
+            <a href="habits.html" class="btn">Add Some Habits to See Their Impact!</a>
+          </p>
+        `;
+        return;
+      }
+
+      const habitsByImpact = [...gameState.activeHabits].sort((a, b) => b.impact - a.impact);
+
+      container.innerHTML = habitsByImpact.map(habit => {
+        const weeklyImpact = habit.impact * habit.weeklyProgress;
+        const monthlyImpact = habit.impact * 30; // Assuming daily completion
+        
+        return `
+          <div style="background: white; padding: 1.5rem; margin: 1rem 0; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+              <h4>${habit.icon || '🌱'} ${habit.name}</h4>
+              <span style="background: #27ae60; color: white; padding: 0.5rem 1rem; border-radius: 20px; font-weight: bold;">
+                ${habit.impact} kg CO₂/day
+              </span>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem;">
+              <div style="text-align: center; padding: 1rem; background: #f8f9fa; border-radius: 10px;">
+                <strong>This Week</strong><br>
+                <span style="color: #27ae60; font-size: 1.2rem;">${weeklyImpact.toFixed(1)} kg CO₂</span>
+              </div>
+              <div style="text-align: center; padding: 1rem; background: #f8f9fa; border-radius: 10px;">
+                <strong>Monthly Potential</strong><br>
+                <span style="color: #27ae60; font-size: 1.2rem;">${monthlyImpact.toFixed(1)} kg CO₂</span>
+              </div>
+              <div style="text-align: center; padding: 1rem; background: #f8f9fa; border-radius: 10px;">
+                <strong>Completed</strong><br>
+                <span style="color: #f39c12; font-size: 1.2rem;">${habit.weeklyProgress}/7 days</span>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+  </script>
+</body>
+</html>

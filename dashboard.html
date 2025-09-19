@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - EcoHabit</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo">🌱 EcoHabit</div>
+      <div class="nav-menu">
+        <a href="dashboard.html" class="nav-item active">Dashboard</a>
+        <a href="habits.html" class="nav-item">My Habits</a>
+        <a href="calculator.html" class="nav-item">Carbon Calculator</a>
+        <a href="tips.html" class="nav-item">Daily Tips</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="hero">
+      <h1>Welcome to Your Eco Journey! 🌍</h1>
+      <p>Track sustainable habits, reduce your carbon footprint, and make a difference</p>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon">🏆</div>
+        <div class="stat-number" id="totalPoints">0</div>
+        <div>Eco Points</div>
+        <div class="level-badge" id="userLevel">Eco Beginner</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">🔥</div>
+        <div class="stat-number" id="longestStreak">0</div>
+        <div>Longest Streak</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">🌱</div>
+        <div class="stat-number" id="habitsCompleted">0</div>
+        <div>Habits Completed</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">💚</div>
+        <div class="stat-number" id="carbonSaved">0</div>
+        <div>kg CO₂ Saved</div>
+      </div>
+    </div>
+
+    <div class="habit-section">
+      <h2 class="section-title">
+        <i class="fas fa-chart-line"></i>
+        Your Progress
+      </h2>
+      <div class="progress-bar">
+        <div class="progress-fill" id="weeklyProgress" style="width: 0%"></div>
+      </div>
+      <p>Weekly Goal Progress: <span id="progressText">0/7 days</span></p>
+    </div>
+
+    <div class="habit-section">
+      <h2 class="section-title">
+        <i class="fas fa-fire"></i>
+        Today's Habits
+      </h2>
+      <div id="todaysHabits">
+        <p style="text-align: center; color: #666; padding: 2rem;">
+          <a href="habits.html" class="btn">Add Some Habits to Get Started!</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+  <script>
+    // Initialize dashboard
+    document.addEventListener('DOMContentLoaded', () => {
+      initApp();
+      updateDashboard();
+      renderTodaysHabits();
+    });
+
+    function renderTodaysHabits() {
+      const container = document.getElementById('todaysHabits');
+      const todaysHabits = gameState.activeHabits.filter(h => !h.completedToday).slice(0, 3);
+      
+      if (todaysHabits.length === 0) {
+        if (gameState.activeHabits.length === 0) {
+          container.innerHTML = `
+            <p style="text-align: center; color: #666; padding: 2rem;">
+              <a href="habits.html" class="btn">Add Some Habits to Get Started!</a>
+            </p>
+          `;
+        } else {
+          container.innerHTML = `
+            <p style="text-align: center; color: #27ae60; padding: 2rem; font-size: 1.2rem;">
+              🎉 All habits completed for today! Great job!
+            </p>
+          `;
+        }
+        return;
+      }
+
+      container.innerHTML = todaysHabits.map(habit => `
+        <div class="habit-item">
+          <div class="habit-info">
+            <h4>${habit.icon || '🌱'} ${habit.name}</h4>
+            <p>Points: ${habit.points} | Impact: -${habit.impact} kg CO₂</p>
+          </div>
+          <button class="btn" onclick="quickCompleteHabit(${habit.id})">
+            Quick Complete
+          </button>
+        </div>
+      `).join('');
+    }
+
+    function quickCompleteHabit(habitId) {
+      completeHabit(habitId);
+      renderTodaysHabits();
+    }
+  </script>
+</body>
+</html>

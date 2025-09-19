@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - EcoHabit</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="firebase-config.js"></script>
+</head>
+<body>
+  <div class="form-container">
+    <div class="logo">🌱 EcoHabit</div>
+    <h2>Welcome Back!</h2>
+    <p>Continue your sustainable journey</p>
+    
+    <form id="loginForm">
+      <input type="email" id="loginEmail" placeholder="Enter Gmail" required>
+      <input type="password" id="loginPassword" placeholder="Enter Password" required>
+      <button style="background-color: #27ae60; height: 25px; width: 200px; border-radius: 8px; color: white; border: none;">
+  Login
+</button>
+
+
+    </form>
+    
+    <p>Don't have an account? <a href="register.html">Register here</a></p>
+    <p><a href="index.html">← Back to Home</a></p>
+  </div>
+
+  <script type="module">
+    import { auth, signInWithEmailAndPassword } from './firebase-config.js';
+
+    // Gmail validation
+    function isValidEmail(email) {
+      return /^[a-zA-Z0-9._%+-]+@gmail\.com$/.test(email);
+    }
+
+    document.getElementById('loginForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('loginEmail').value;
+      const password = document.getElementById('loginPassword').value;
+
+      if (!isValidEmail(email)) {
+        alert('Please enter a valid Gmail address (example@gmail.com)');
+        return;
+      }
+
+      try {
+        await signInWithEmailAndPassword(auth, email, password);
+        alert('Login successful! 🌱');
+        window.location.href = "dashboard.html";
+      } catch (error) {
+        alert("Login failed: " + error.message);
+      }
+    });
+  </script>
+</body>
+</html>
