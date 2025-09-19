@@ -5,117 +5,19 @@
   box-sizing: border-box;
 }
 
-:root {
-  /* Light Theme Variables */
-  --bg-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  --bg-secondary: rgba(255, 255, 255, 0.95);
-  --bg-card: white;
-  --bg-accent: #f8f9fa;
-  --bg-selected: #e8f5e8;
-  --bg-hover: rgba(255, 255, 255, 0.1);
-  
-  --text-primary: #333;
-  --text-secondary: #666;
-  --text-muted: #999;
-  --text-white: white;
-  --text-inverse: white;
-  
-  --accent-primary: #27ae60;
-  --accent-secondary: #2ecc71;
-  --accent-warning: #f39c12;
-  --accent-danger: #e74c3c;
-  
-  --border-color: #e9ecef;
-  --border-hover: #27ae60;
-  --shadow: rgba(0,0,0,0.1);
-  --shadow-hover: rgba(0,0,0,0.2);
-  
-  --navbar-bg: rgba(255, 255, 255, 0.95);
-  --navbar-text: #333;
-  
-  /* Gradient backgrounds for cards */
-  --gradient-blue: linear-gradient(135deg, #74b9ff, #0984e3);
-  --gradient-green: linear-gradient(135deg, #00b894, #00a085);
-  --gradient-pink: linear-gradient(135deg, #fd79a8, #e84393);
-  --gradient-orange: linear-gradient(135deg, #fdcb6e, #e17055);
-  --gradient-purple: linear-gradient(135deg, #a29bfe, #6c5ce7);
-  --gradient-dark-blue: linear-gradient(135deg, #55a3ff, #003d82);
-}
-
-[data-theme="dark"] {
-  /* Dark Theme Variables */
-  --bg-primary: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
-  --bg-secondary: rgba(44, 62, 80, 0.95);
-  --bg-card: #34495e;
-  --bg-accent: #2c3e50;
-  --bg-selected: #27ae60;
-  --bg-hover: rgba(52, 73, 94, 0.3);
-  
-  --text-primary: #ecf0f1;
-  --text-secondary: #bdc3c7;
-  --text-muted: #95a5a6;
-  --text-white: #ecf0f1;
-  --text-inverse: #2c3e50;
-  
-  --accent-primary: #2ecc71;
-  --accent-secondary: #27ae60;
-  --accent-warning: #f1c40f;
-  --accent-danger: #e74c3c;
-  
-  --border-color: #4a5568;
-  --border-hover: #2ecc71;
-  --shadow: rgba(0,0,0,0.3);
-  --shadow-hover: rgba(0,0,0,0.5);
-  
-  --navbar-bg: rgba(44, 62, 80, 0.95);
-  --navbar-text: #ecf0f1;
-  
-  /* Dark theme gradients */
-  --gradient-blue: linear-gradient(135deg, #4a90e2, #2980b9);
-  --gradient-green: linear-gradient(135deg, #16a085, #1abc9c);
-  --gradient-pink: linear-gradient(135deg, #e91e63, #ad1457);
-  --gradient-orange: linear-gradient(135deg, #ff9800, #f57c00);
-  --gradient-purple: linear-gradient(135deg, #9b59b6, #8e44ad);
-  --gradient-dark-blue: linear-gradient(135deg, #34495e, #2c3e50);
-}
-
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: var(--bg-primary);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   min-height: 100vh;
-  color: var(--text-primary);
-  transition: all 0.3s ease;
-}
-
-/* Theme Toggle Button */
-.theme-toggle {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  z-index: 1000;
-  background: var(--accent-primary);
-  color: var(--text-white);
-  border: none;
-  padding: 12px;
-  border-radius: 50%;
-  cursor: pointer;
-  font-size: 1.2rem;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px var(--shadow);
-}
-
-.theme-toggle:hover {
-  transform: scale(1.1);
-  box-shadow: 0 6px 16px var(--shadow-hover);
+  color: #333;
 }
 
 /* Navigation */
 .navbar {
-  background: var(--navbar-bg);
+  background: rgba(255, 255, 255, 0.95);
   padding: 1rem 2rem;
-  box-shadow: 0 2px 20px var(--shadow);
+  box-shadow: 0 2px 20px rgba(0,0,0,0.1);
   backdrop-filter: blur(10px);
-  transition: all 0.3s ease;
 }
 
 .nav-container {
@@ -129,8 +31,7 @@ body {
 .logo {
   font-size: 1.8rem;
   font-weight: bold;
-  color: var(--accent-primary);
-  transition: color 0.3s ease;
+  color: #27ae60;
 }
 
 .nav-menu {
@@ -140,16 +41,16 @@ body {
 
 .nav-item {
   text-decoration: none;
-  color: var(--navbar-text);
+  color: #333;
   padding: 0.5rem 1rem;
   border-radius: 10px;
-  transition: all 0.3s ease;
+  transition: all 0.3s;
   font-weight: 500;
 }
 
 .nav-item:hover, .nav-item.active {
-  background: var(--accent-primary);
-  color: var(--text-white);
+  background: #27ae60;
+  color: white;
 }
 
 /* Container */
@@ -160,15 +61,14 @@ body {
 }
 
 .form-container {
-  background: var(--bg-secondary);
+  background: rgba(255, 255, 255, 0.95);
   padding: 3rem;
   border-radius: 20px;
-  box-shadow: 0 20px 40px var(--shadow);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
   backdrop-filter: blur(10px);
   text-align: center;
   width: 400px;
   margin: 10vh auto;
-  transition: all 0.3s ease;
 }
 
 /* Hero Styles */
@@ -178,9 +78,10 @@ body {
   align-items: center;
   justify-content: center;
   text-align: center;
-  color: var(--text-white);
+  color: white;
   padding: 2rem;
 }
+
 
 .hero-content h1 {
   font-size: 4rem;
@@ -202,7 +103,7 @@ body {
 .hero {
   text-align: center;
   padding: 3rem 0;
-  color: var(--text-white);
+  color: white;
 }
 
 .hero h1 {
@@ -224,17 +125,10 @@ body {
 }
 
 .feature {
-  background: var(--bg-hover);
+  background: rgba(255, 255, 255, 0.1);
   padding: 2rem;
   border-radius: 20px;
   backdrop-filter: blur(10px);
-  transition: all 0.3s ease;
-  border: 2px solid transparent;
-}
-
-.feature:hover {
-  border-color: var(--accent-primary);
-  transform: translateY(-5px);
 }
 
 .feature-icon {
@@ -244,11 +138,6 @@ body {
 
 .feature h3 {
   margin-bottom: 1rem;
-  color: var(--text-primary);
-}
-
-.feature p {
-  color: var(--text-secondary);
 }
 
 /* Stats Grid */
@@ -260,20 +149,17 @@ body {
 }
 
 .stat-card {
-  background: var(--bg-card);
+  background: rgba(255, 255, 255, 0.95);
   padding: 2rem;
   border-radius: 20px;
   text-align: center;
-  box-shadow: 0 10px 30px var(--shadow);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
   backdrop-filter: blur(10px);
-  transition: all 0.3s ease;
-  border: 2px solid transparent;
+  transition: transform 0.3s;
 }
 
 .stat-card:hover {
   transform: translateY(-5px);
-  border-color: var(--accent-primary);
-  box-shadow: 0 15px 35px var(--shadow-hover);
 }
 
 .stat-icon {
@@ -284,36 +170,25 @@ body {
 .stat-number {
   font-size: 2.5rem;
   font-weight: bold;
-  color: var(--accent-primary);
-}
-
-.stat-card div:last-child:not(.stat-number) {
-  color: var(--text-secondary);
-  margin-top: 0.5rem;
+  color: #27ae60;
 }
 
 /* Habit Sections */
 .habit-section {
-  background: var(--bg-secondary);
+  background: rgba(255, 255, 255, 0.95);
   border-radius: 20px;
   padding: 2rem;
   margin: 2rem 0;
   backdrop-filter: blur(10px);
-  transition: all 0.3s ease;
-  box-shadow: 0 8px 25px var(--shadow);
 }
 
 .section-title {
   font-size: 1.8rem;
   margin-bottom: 1.5rem;
-  color: var(--text-primary);
+  color: #2c3e50;
   display: flex;
   align-items: center;
   gap: 0.5rem;
-}
-
-.section-title i {
-  color: var(--accent-primary);
 }
 
 .preset-habits {
@@ -324,40 +199,28 @@ body {
 }
 
 .habit-card {
-  background: var(--bg-accent);
+  background: #f8f9fa;
   border: 2px solid transparent;
   border-radius: 15px;
   padding: 1.5rem;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.3s;
   text-align: center;
-  color: var(--text-primary);
 }
 
 .habit-card:hover {
-  border-color: var(--border-hover);
+  border-color: #27ae60;
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px var(--shadow);
 }
 
 .habit-card.selected {
-  border-color: var(--border-hover);
-  background: var(--bg-selected);
+  border-color: #27ae60;
+  background: #e8f5e8;
   transform: scale(0.98);
 }
 
 .habit-card.selected:hover {
   transform: scale(1.02);
-}
-
-.habit-card h4 {
-  color: var(--text-primary);
-  margin: 0.5rem 0;
-}
-
-.habit-card p {
-  color: var(--text-secondary);
-  margin-bottom: 0.5rem;
 }
 
 .habit-icon {
@@ -367,7 +230,7 @@ body {
 }
 
 .habit-impact {
-  color: var(--accent-primary);
+  color: #27ae60;
   font-weight: bold;
   margin-top: 0.5rem;
 }
@@ -377,35 +240,24 @@ body {
 }
 
 .habit-item {
-  background: var(--bg-card);
+  background: white;
   border-radius: 15px;
   padding: 1.5rem;
   margin: 1rem 0;
-  box-shadow: 0 5px 15px var(--shadow);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transition: all 0.3s ease;
-  border: 2px solid transparent;
-}
-
-.habit-item:hover {
-  border-color: var(--border-hover);
-  transform: translateY(-2px);
 }
 
 .habit-info h4 {
-  color: var(--text-primary);
+  color: #2c3e50;
   margin-bottom: 0.5rem;
 }
 
-.habit-info p {
-  color: var(--text-secondary);
-}
-
 .habit-streak {
-  background: var(--accent-warning);
-  color: var(--text-white);
+  background: #f39c12;
+  color: white;
   padding: 0.25rem 0.75rem;
   border-radius: 20px;
   font-size: 0.9rem;
@@ -414,14 +266,14 @@ body {
 
 .habit-progress {
   margin-top: 1rem;
-  background: var(--bg-accent);
+  background: #f0f0f0;
   border-radius: 10px;
   height: 8px;
   overflow: hidden;
 }
 
 .habit-progress-fill {
-  background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+  background: linear-gradient(90deg, #27ae60, #2ecc71);
   height: 100%;
   border-radius: 10px;
   transition: width 0.5s ease;
@@ -429,54 +281,52 @@ body {
 
 .habit-progress-text {
   font-size: 0.9rem;
-  color: var(--text-secondary);
+  color: #666;
   margin-top: 0.5rem;
   text-align: center;
 }
 
 .custom-habit {
-  border: 2px dashed var(--accent-primary);
-  background: var(--bg-selected);
+  border: 2px dashed #27ae60;
+  background: #f0f8f0;
 }
 
 /* Buttons */
 .btn {
-  background: var(--accent-primary);
-  color: var(--text-white);
+  background: #27ae60;
+  color: white;
   border: none;
   padding: 0.75rem 1.5rem;
   border-radius: 10px;
   cursor: pointer;
   font-size: 1rem;
-  transition: all 0.3s ease;
+  transition: all 0.3s;
   font-weight: 600;
   text-decoration: none;
   display: inline-block;
 }
 
 .btn:hover {
-  background: var(--accent-secondary);
+  background: #219a52;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px var(--shadow);
 }
 
 .btn-primary {
-  background: var(--accent-primary);
+  background: #27ae60;
 }
 
 .btn-secondary {
   background: transparent;
-  border: 2px solid var(--text-white);
-  color: var(--text-white);
+  border: 2px solid white;
 }
 
 .btn-secondary:hover {
-  background: var(--text-white);
-  color: var(--accent-primary);
+  background: white;
+  color: #27ae60;
 }
 
 .btn-danger {
-  background: var(--accent-danger);
+  background: #e74c3c;
 }
 
 .btn-danger:hover {
@@ -484,7 +334,7 @@ body {
 }
 
 .btn-success {
-  background: var(--accent-primary);
+  background: #27ae60;
   opacity: 0.7;
 }
 
@@ -500,22 +350,15 @@ input, select {
   width: 100%;
   padding: 0.75rem;
   margin: 0.5rem 0;
-  border: 2px solid var(--border-color);
+  border: 2px solid #e9ecef;
   border-radius: 10px;
   font-size: 1rem;
-  transition: all 0.3s ease;
-  background: var(--bg-card);
-  color: var(--text-primary);
+  transition: border-color 0.3s;
 }
 
 input:focus, select:focus {
   outline: none;
-  border-color: var(--border-hover);
-  box-shadow: 0 0 0 3px rgba(39, 174, 96, 0.1);
-}
-
-input::placeholder {
-  color: var(--text-muted);
+  border-color: #27ae60;
 }
 
 button[type="submit"] {
@@ -527,12 +370,12 @@ label {
   display: block;
   margin-bottom: 0.25rem;
   font-weight: 500;
-  color: var(--text-primary);
+  color: #555;
 }
 
 /* Progress Bars */
 .progress-bar {
-  background: var(--bg-accent);
+  background: #e0e0e0;
   border-radius: 10px;
   height: 20px;
   margin: 1rem 0;
@@ -540,16 +383,16 @@ label {
 }
 
 .progress-fill {
-  background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+  background: linear-gradient(90deg, #27ae60, #2ecc71);
   height: 100%;
   border-radius: 10px;
-  transition: width 0.3s ease;
+  transition: width 0.3s;
 }
 
 /* Level Badge */
 .level-badge {
-  background: linear-gradient(135deg, var(--accent-warning), #e67e22);
-  color: var(--text-white);
+  background: linear-gradient(135deg, #f39c12, #e67e22);
+  color: white;
   padding: 0.5rem 1rem;
   border-radius: 20px;
   font-weight: bold;
@@ -559,8 +402,8 @@ label {
 
 /* Carbon Calculator */
 .carbon-calculator {
-  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-  color: var(--text-white);
+  background: linear-gradient(135deg, #27ae60, #2ecc71);
+  color: white;
   border-radius: 20px;
   padding: 2rem;
   margin: 2rem 0;
@@ -575,122 +418,31 @@ label {
 
 /* Tip Card */
 .tip-card {
-  background: var(--bg-card);
+  background: rgba(255, 255, 255, 0.95);
   border-radius: 15px;
   padding: 2rem;
   text-align: center;
-  box-shadow: 0 10px 30px var(--shadow);
-  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
 .tip-icon {
   font-size: 3rem;
-  color: var(--accent-primary);
+  color: #27ae60;
   margin-bottom: 1rem;
-}
-
-.tip-card h3 {
-  color: var(--text-primary);
-  margin-bottom: 1rem;
-}
-
-.tip-card p {
-  color: var(--text-secondary);
-}
-
-/* Action Cards with Gradients */
-.action-card-blue {
-  background: var(--gradient-blue);
-  color: var(--text-white);
-  padding: 1.5rem;
-  border-radius: 15px;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-}
-
-.action-card-green {
-  background: var(--gradient-green);
-  color: var(--text-white);
-  padding: 1.5rem;
-  border-radius: 15px;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-}
-
-.action-card-pink {
-  background: var(--gradient-pink);
-  color: var(--text-white);
-  padding: 1.5rem;
-  border-radius: 15px;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-}
-
-.action-card-orange {
-  background: var(--gradient-orange);
-  color: var(--text-white);
-  padding: 1.5rem;
-  border-radius: 15px;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-}
-
-.action-card-purple {
-  background: var(--gradient-purple);
-  color: var(--text-white);
-  padding: 1.5rem;
-  border-radius: 15px;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-}
-
-.action-card-dark-blue {
-  background: var(--gradient-dark-blue);
-  color: var(--text-white);
-  padding: 1.5rem;
-  border-radius: 15px;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-}
-
-[class*="action-card-"]:hover {
-  transform: translateY(-5px);
 }
 
 /* Links */
 a {
-  color: var(--accent-primary);
+  color: #27ae60;
   text-decoration: none;
-  transition: color 0.3s ease;
 }
 
 a:hover {
   text-decoration: underline;
-  color: var(--accent-secondary);
-}
-
-/* Text colors for various elements */
-p, span, div {
-  color: var(--text-primary);
-}
-
-.text-secondary {
-  color: var(--text-secondary);
-}
-
-.text-muted {
-  color: var(--text-muted);
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .theme-toggle {
-    top: 10px;
-    right: 10px;
-    padding: 10px;
-    font-size: 1rem;
-  }
-  
   .nav-menu {
     gap: 1rem;
   }

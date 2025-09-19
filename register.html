@@ -6,6 +6,78 @@
   <title>Register - EcoHabit</title>
   <link rel="stylesheet" href="style.css">
   <script type="module" src="firebase-config.js"></script>
+
+  <style>
+    /* Full-page background image */
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: url('background.jpg') no-repeat center center/cover;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Transparent + Blurry Glass Box */
+    .form-container {
+      background: rgba(255, 255, 255, 0.2); /* semi-transparent */
+      backdrop-filter: blur(10px); /* blur effect */
+      -webkit-backdrop-filter: blur(10px); /* safari support */
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      width: 350px;
+      text-align: center;
+      color: #fff;
+    }
+
+    .form-container .logo {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    .form-container h2 {
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    .form-container p {
+      margin-bottom: 20px;
+    }
+
+    .form-container input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 8px;
+      outline: none;
+    }
+
+    .form-container button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 15px;
+      border: none;
+      border-radius: 8px;
+      background: #2ecc71;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .form-container button:hover {
+      background: #27ae60;
+    }
+
+    .form-container a {
+      color: #f1f1f1;
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
   <div class="form-container">
@@ -20,8 +92,8 @@
       <button type="submit">Create Account</button>
     </form>
     
-    <p>Already have an account? <a href="login.html">Login here</a></p>
-    <p><a href="index.html">← Back to Home</a></p>
+    <p>Already have an account? <a href="login.html" style="color: rgb(158, 158, 215);">Login here</a></p>
+    <p><a href="index.html" style="color: rgba(110, 104, 104, 0.895);">← Back to Home</a></p>
   </div>
 
   <script type="module">

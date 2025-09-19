@@ -6,6 +6,78 @@
   <title>Login - EcoHabit</title>
   <link rel="stylesheet" href="style.css">
   <script type="module" src="firebase-config.js"></script>
+  <style>
+    /* Background image */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: url("background.jpg") no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    /* Blurry glass effect container */
+    .form-container {
+      background: rgba(255, 255, 255, 0.2); /* transparent */
+      backdrop-filter: blur(10px); /* blur effect */
+      -webkit-backdrop-filter: blur(10px); /* Safari support */
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      width: 350px;
+      color: #fff;
+    }
+
+    .form-container .logo {
+      font-size: 2rem;
+      margin-bottom: 15px;
+    }
+
+    .form-container h2 {
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    .form-container p {
+      margin-bottom: 20px;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 8px;
+      outline: none;
+    }
+
+    button {
+      background-color: #27ae60;
+      height: 40px;
+      width: 100%;
+      border-radius: 8px;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 10px;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #219150;
+    }
+
+    a {
+      color: #f1f1f1;
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
   <div class="form-container">
@@ -16,21 +88,16 @@
     <form id="loginForm">
       <input type="email" id="loginEmail" placeholder="Enter Gmail" required>
       <input type="password" id="loginPassword" placeholder="Enter Password" required>
-      <button style="background-color: #27ae60; height: 25px; width: 200px; border-radius: 8px; color: white; border: none;">
-  Login
-</button>
-
-
+      <button type="submit">Login</button>
     </form>
     
-    <p>Don't have an account? <a href="register.html">Register here</a></p>
-    <p><a href="index.html">← Back to Home</a></p>
+    <p>Don't have an account? <a href="register.html" style="color: rgb(158, 158, 215);">Register here</a></p>
+    <p><a href="index.html" style="color: rgba(110, 104, 104, 0.895);">← Back to Home</a></p>
   </div>
 
   <script type="module">
     import { auth, signInWithEmailAndPassword } from './firebase-config.js';
 
-    // Gmail validation
     function isValidEmail(email) {
       return /^[a-zA-Z0-9._%+-]+@gmail\.com$/.test(email);
     }
