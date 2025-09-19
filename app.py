@@ -2,6 +2,7 @@ import sqlite3
 import json
 import random
 import os
+from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime, timedelta
 from flask import Flask, render_template, request, jsonify, session
 
@@ -142,6 +143,56 @@ def calculate_streak(cursor):
 @app.route('/')
 def home():
     return render_template('home.html')
+
+
+@app.route("/register", methods=["GET", "POST"])
+def register():
+    if request.method == "POST":
+        username = request.form["username"]
+        password = request.form["password"]
+        hashed_pw = generate_password_hash(password)
+
+        conn = sqlite3.connect("habits.db")
+        c = conn.cursor()
+        try:
+            c.execute(
+                "INSERT INTO users (username, password) VALUES (?, ?)", (username, hashed_pw))
+            conn.commit()
+        except sqlite3.IntegrityError:
+            return "Username already exists!"
+        finally:
+            conn.close()
+
+        return "Registration successful! <a href='/login'>Login here</a>"
+
+    return render_template("register.html")
+
+
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    if request.method == "POST":
+        username = request.form["username"]
+        password = request.form["password"]
+
+        conn = sqlite3.connect("habits.db")
+        c = conn.cursor()
+        c.execute("SELECT id, password FROM users WHERE username=?", (username,))
+        user = c.fetchone()
+        conn.close()
+
+        if user and check_password_hash(user[1], password):
+            session["user_id"] = user[0]
+            return "Login successful! <a href='/'>Go to Dashboard</a>"
+        else:
+            return "Invalid username or password!"
+
+    return render_template("login.html")
+
+
+@app.route("/logout")
+def logout():
+    session.pop("user_id", None)
+    return "Logged out successfully! <a href='/login'>Login again</a>"
 
 
 @app.route('/dashboard')
