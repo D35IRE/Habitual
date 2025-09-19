@@ -51,8 +51,4 @@ HTML, CSS, JavaScript
 
 Firebase Authentication & Firestore
 
----
-
-If you want, I can also **add a short section on how to deploy this project live on GitHub Pages** so people can access it directly from a browser.  
-
-Do you want me to add that? ​:contentReference[oaicite:0]{index=0}​
+---  
