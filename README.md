@@ -22,18 +22,18 @@ This web application allows users to:
 
 ## File Structure
 
-latest/
-├── app.js # Main JavaScript logic
-├── firebase-config.js # Firebase configuration
-├── index.html # Landing page
-├── login.html # Login page
-├── register.html # Registration page
-├── dashboard.html # User dashboard
-├── habits.html # Habit tracking page
-├── calculator.html # Calculator utility
-├── tips.html # Tips page
-├── style.css # Styling for all pages
-└── background.jpg # Background image
+latest/  
+├── app.js # Main JavaScript logic  
+├── firebase-config.js # Firebase configuration  
+├── index.html # Landing page  
+├── login.html # Login page  
+├── register.html # Registration page  
+├── dashboard.html # User dashboard  
+├── habits.html # Habit tracking page  
+├── calculator.html # Calculator utility  
+├── tips.html # Tips page  
+├── style.css # Styling for all pages  
+└── background.jpg # Background image  
 
 ## Installation & Setup
 
